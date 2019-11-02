@@ -22,21 +22,21 @@ var options = {
     //information window options
     info_img : "./img/info.svg",
     info_title : "İnformation",
-    info_description : "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout",
+    info_description : "It is a long established fact that a reader will be of a page when looking at its layout",
     info_button_ok_text : "Ok",
     info_button_ok_color : "#48a0dc",
 
     //warning window options
     warning_img : "./img/warning.svg",
     warning_title : "Warning",
-    warning_description : "he point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters making it look like readable English.",
+    warning_description : "he point of using Lorem Ipsum is that it has making it look like readable English.",
     warning_button_ok_text : "Ok",
     warning_button_ok_color : "#ffcc00",
 
     //error window options
     error_img : "./img/error.svg",
     error_title : "Error",
-    error_description : "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested.",
+    error_description : "The standard chunk of Lorem Ipsum used since below for those interested.",
     error_button_ok_text : "Ok",
     error_button_ok_color : "#E21B1B",
 
