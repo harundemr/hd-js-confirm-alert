@@ -7,6 +7,8 @@ var hd_description = document.getElementById('hd-description-p');
 var hd_button_ok = document.getElementById('hd-button-ok');
 var hd_button_cancel = document.getElementById('hd-button-cancel');
 
+
+
 var options = {
     //delete window options
     delete_img :"./img/delete.svg",
@@ -43,101 +45,296 @@ var options = {
     success_title : "Success",
     success_description : "Check your email for a looking confirmation. We'll see you soon!",
     success_button_ok_text : "Ok",
-    success_button_ok_color : "#25ae88"
+    success_button_ok_color : "#25ae88",
+
+    //butons's fonctions
+    onOk : null,
+    onCancel : null
 }
 
-function hd_dialogbox(type){
+function hdConfirm(title, description, onOk, onCancel){
     
     hd_container.className = hd_container.className !== 'show' ? 'show' : 'hide';
+
     if (hd_container.className === 'show') {
-        
-        if(type == "delete"){
-            hd_img.src = options.delete_img;
-            hd_header.innerText = options.delete_title;
-            hd_description.innerText = options.delete_description;
-            hd_button_ok.style.display = "block";
-            hd_button_ok.style.borderBottomLeftRadius = "0px";
-            hd_button_ok.style.borderBottomRightRadius = "0px";
-            hd_button_ok.style.color = options.delete_button_ok_color;
-            hd_button_ok.innerText = options.delete_button_ok_text;
-            hd_button_cancel.style.display = "block";
-            hd_button_cancel.style.borderBottomLeftRadius = "12px";
-            hd_button_cancel.style.borderBottomRightRadius = "12px";
-            hd_button_cancel.innerText = options.delete_button_cancel_text;
+
+        if(title != null){
+            options.delete_title = (typeof title === 'string') ? title : options.delete_title;
         }
-        else if(type == "info"){
-            hd_img.src = options.info_img;
-            hd_header.innerText = options.info_title;
-            hd_description.innerText = options.info_description;
-            hd_button_ok.style.display = "block";
-            hd_button_ok.style.borderBottomLeftRadius = "12px";
-            hd_button_ok.style.borderBottomRightRadius = "12px";
-            hd_button_ok.style.color = options.info_button_ok_color;
-            hd_button_ok.innerText = options.info_button_ok_text;
-            hd_button_cancel.style.display = "none";
-            hd_button_cancel.style.borderBottomLeftRadius = "0px";
-            hd_button_cancel.style.borderBottomRightRadius = "0px";
-            hd_button_cancel.innerText = "";
+
+        if(description != null){
+            options.delete_description = (typeof description === 'string') ? description : options.delete_description;
         }
-        else if(type == "warning"){
-            hd_img.src = options.warning_img;
-            hd_header.innerText = options.warning_title;
-            hd_description.innerText = options.warning_description;
-            hd_button_ok.style.display = "block";
-            hd_button_ok.style.borderBottomLeftRadius = "12px";
-            hd_button_ok.style.borderBottomRightRadius = "12px";
-            hd_button_ok.style.color = options.warning_button_ok_color;
-            hd_button_ok.innerText = options.warning_button_ok_text;
-            hd_button_cancel.style.display = "none";
-            hd_button_cancel.style.borderBottomLeftRadius = "0px";
-            hd_button_cancel.style.borderBottomRightRadius = "0px";
-            hd_button_cancel.innerText = "";
-        }
-        else if(type == "error"){
-            hd_img.src = options.error_img;
-            hd_header.innerText = options.error_title;
-            hd_description.innerText = options.error_description;
-            hd_button_ok.style.display = "block";
-            hd_button_ok.style.borderBottomLeftRadius = "12px";
-            hd_button_ok.style.borderBottomRightRadius = "12px";
-            hd_button_ok.style.color = options.error_button_ok_color;
-            hd_button_ok.innerText = options.error_button_ok_text;
-            hd_button_cancel.style.display = "none";
-            hd_button_cancel.style.borderBottomLeftRadius = "0px";
-            hd_button_cancel.style.borderBottomRightRadius = "0px";
-            hd_button_cancel.innerText = "";
-        }
-        else if(type == "success"){
-            hd_img.src = options.success_img;
-            hd_header.innerText = options.success_title;
-            hd_description.innerText = options.success_description;
-            hd_button_ok.style.display = "block";
-            hd_button_ok.style.borderBottomLeftRadius = "12px";
-            hd_button_ok.style.borderBottomRightRadius = "12px";
-            hd_button_ok.style.color = options.success_button_ok_color;
-            hd_button_ok.innerText = options.success_button_ok_text;
-            hd_button_cancel.style.display = "none";
-            hd_button_cancel.style.borderBottomLeftRadius = "0px";
-            hd_button_cancel.style.borderBottomRightRadius = "0px";
-            hd_button_cancel.innerText = "";
-        }
-        hd_bg.style.zIndex = 21;
-        hd_bg.style.display = "block";
-        hd_container.style.display = 'block';
-        
-        window.setTimeout(function(){
-            hd_container.style.opacity = 1;
-            hd_container.style.transform = 'scale(1)';
-        },0);
+
+        hd_img.src = options.delete_img;
+        hd_header.innerText = options.delete_title;
+        hd_description.innerText = options.delete_description;
+        hd_button_ok.style.display = "block";
+        hd_button_ok.style.borderBottomLeftRadius = "0px";
+        hd_button_ok.style.borderBottomRightRadius = "0px";
+        hd_button_ok.style.color = options.delete_button_ok_color;
+        hd_button_ok.innerText = options.delete_button_ok_text;
+        hd_button_cancel.style.display = "block";
+        hd_button_cancel.style.borderBottomLeftRadius = "12px";
+        hd_button_cancel.style.borderBottomRightRadius = "12px";
+        hd_button_cancel.innerText = options.delete_button_cancel_text;
+
+        show();
     }
     if (hd_container.className === 'hide') {    
-        hd_container.style.opacity = 0;
-        hd_container.style.transform = 'scale(0)';
-        window.setTimeout(function(){
-            hd_container.style.display = 'none';
-            hd_bg.style.display = "none";
-            hd_bg.style.zIndex = -1;
-        },300);
+        destroy();
+    }
+    
+    if(onOk !== null)
+    {
+        if(typeof onOk === 'function'){
+            options.onOk = onOk;
+        }
     }
 
+    if(onCancel !== null)
+    {
+        if(typeof onCancel === 'function'){
+            options.onCancel = onCancel;
+        }
+    }
+}
+
+function hdAlertInfo(title, description, onOk, onCancel){
+    
+    hd_container.className = hd_container.className !== 'show' ? 'show' : 'hide';
+
+    if (hd_container.className === 'show') {
+
+        if(title != null){
+            options.info_title = (typeof title === 'string') ? title : options.info_title;
+        }
+        
+        if(description != null){
+            options.info_description = (typeof description === 'string') ? description : options.info_description;
+        }
+
+        hd_img.src = options.info_img;
+        hd_header.innerText = options.info_title;
+        hd_description.innerText = options.info_description;
+        hd_button_ok.style.display = "block";
+        hd_button_ok.style.borderBottomLeftRadius = "12px";
+        hd_button_ok.style.borderBottomRightRadius = "12px";
+        hd_button_ok.style.color = options.info_button_ok_color;
+        hd_button_ok.innerText = options.info_button_ok_text;
+        hd_button_cancel.style.display = "none";
+        hd_button_cancel.style.borderBottomLeftRadius = "0px";
+        hd_button_cancel.style.borderBottomRightRadius = "0px";
+        hd_button_cancel.innerText = "";
+
+        show();
+    }
+    if (hd_container.className === 'hide') {    
+        destroy();
+    }
+
+    if(onOk !== null)
+    {
+        if(typeof onOk === 'function'){
+            options.onOk = onOk;
+        }
+    }
+
+    if(onCancel !== null)
+    {
+        if(typeof onCancel === 'function'){
+            options.onCancel = onCancel;
+        }
+    }
+}
+
+function hdAlertWarning(title, description, onOk, onCancel){
+    
+    hd_container.className = hd_container.className !== 'show' ? 'show' : 'hide';
+
+    if (hd_container.className === 'show') {
+
+        if(title != null){
+            options.warning_title = (typeof title === 'string') ? title : options.warning_title;
+        }
+        
+        if(description != null){
+            options.warning_description = (typeof description === 'string') ? description : options.warning_description;
+        }
+
+        hd_img.src = options.warning_img;
+        hd_header.innerText = options.warning_title;
+        hd_description.innerText = options.warning_description;
+        hd_button_ok.style.display = "block";
+        hd_button_ok.style.borderBottomLeftRadius = "12px";
+        hd_button_ok.style.borderBottomRightRadius = "12px";
+        hd_button_ok.style.color = options.warning_button_ok_color;
+        hd_button_ok.innerText = options.warning_button_ok_text;
+        hd_button_cancel.style.display = "none";
+        hd_button_cancel.style.borderBottomLeftRadius = "0px";
+        hd_button_cancel.style.borderBottomRightRadius = "0px";
+        hd_button_cancel.innerText = "";
+      
+        show();
+    }
+    if (hd_container.className === 'hide') {    
+        destroy();
+    }
+
+    if(onOk !== null)
+    {
+        if(typeof onOk === 'function'){
+            options.onOk = onOk;
+        }
+    }
+
+    if(onCancel !== null)
+    {
+        if(typeof onCancel === 'function'){
+            options.onCancel = onCancel;
+        }
+    }
+}
+
+function hdAlertError(title, description, onOk, onCancel){
+    
+    hd_container.className = hd_container.className !== 'show' ? 'show' : 'hide';
+
+    if (hd_container.className === 'show') {
+
+        if(title != null){
+            options.error_title = (typeof title === 'string') ? title : options.error_title;
+        }
+        
+        if(description != null){
+            options.error_description = (typeof description === 'string') ? description : options.error_description;
+        }
+
+        hd_img.src = options.error_img;
+        hd_header.innerText = options.error_title;
+        hd_description.innerText = options.error_description;
+        hd_button_ok.style.display = "block";
+        hd_button_ok.style.borderBottomLeftRadius = "12px";
+        hd_button_ok.style.borderBottomRightRadius = "12px";
+        hd_button_ok.style.color = options.error_button_ok_color;
+        hd_button_ok.innerText = options.error_button_ok_text;
+        hd_button_cancel.style.display = "none";
+        hd_button_cancel.style.borderBottomLeftRadius = "0px";
+        hd_button_cancel.style.borderBottomRightRadius = "0px";
+        hd_button_cancel.innerText = "";
+
+        show();
+    }
+    if (hd_container.className === 'hide') {    
+        destroy();
+    }
+
+    if(onOk !== null)
+    {
+        if(typeof onOk === 'function'){
+            options.onOk = onOk;
+        }
+    }
+
+    if(onCancel !== null)
+    {
+        if(typeof onCancel === 'function'){
+            options.onCancel = onCancel;
+        }
+    }
+}
+
+function hdAlertSuccess(title, description, onOk, onCancel){
+    
+    hd_container.className = hd_container.className !== 'show' ? 'show' : 'hide';
+
+    if (hd_container.className === 'show') {
+
+        if(title != null){
+            options.success_title = (typeof title === 'string') ? title : options.success_title;
+        }
+        
+        if(description != null){
+            options.success_description = (typeof description === 'string') ? description : options.success_description;
+        }
+
+        hd_img.src = options.success_img;
+        hd_header.innerText = options.success_title;
+        hd_description.innerText = options.success_description;
+        hd_button_ok.style.display = "block";
+        hd_button_ok.style.borderBottomLeftRadius = "12px";
+        hd_button_ok.style.borderBottomRightRadius = "12px";
+        hd_button_ok.style.color = options.success_button_ok_color;
+        hd_button_ok.innerText = options.success_button_ok_text;
+        hd_button_cancel.style.display = "none";
+        hd_button_cancel.style.borderBottomLeftRadius = "0px";
+        hd_button_cancel.style.borderBottomRightRadius = "0px";
+        hd_button_cancel.innerText = "";
+
+        show();
+    }
+    if (hd_container.className === 'hide') {    
+        destroy();
+    }
+
+    if(onOk !== null)
+    {
+        if(typeof onOk === 'function'){
+            options.onOk = onOk;
+        }
+    }
+
+    if(onCancel !== null)
+    {
+        if(typeof onCancel === 'function'){
+            options.onCancel = onCancel;
+        }
+    }
+}
+
+function ok(){
+    destroy();
+
+    if(options.onOk !== null) {
+        options.onOk();
+    }
+
+    options.onOk = null;
+    options.onCancel = null;
+}
+
+function cancel(){
+    destroy();
+
+    if(options.onCancel !== null) {
+        options.onCancel();
+    }
+
+    options.onOk = null;
+    options.onCancel = null;
+}
+
+function destroy(){
+    hd_button_ok.removeEventListener('click', ok);
+    hd_button_cancel.removeEventListener('click', cancel);
+    hd_container.className = 'hide';
+    hd_container.style.opacity = 0;
+    hd_container.style.transform = 'scale(0)';
+    hd_container.style.display = 'none';
+    hd_bg.style.display = "none";
+    hd_bg.style.zIndex = -1;
+}
+
+function show(){
+    hd_bg.style.zIndex = 21;
+    hd_bg.style.display = "block";
+    hd_container.style.display = 'block';
+    
+    window.setTimeout(function(){
+        hd_container.style.opacity = 1;
+        hd_container.style.transform = 'scale(1)';
+    },0);
+
+    hd_button_ok.addEventListener('click', ok);
+    hd_button_cancel.addEventListener('click', cancel);
 }

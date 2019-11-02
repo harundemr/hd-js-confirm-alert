@@ -15,17 +15,17 @@
                 <p id="hd-description-p"></p>
             </div>
             <div class="hd-buttons">
-                <button id="hd-button-ok" class="hd-button hd-ok-button"  onclick='hd_dialogbox()'>Delete</button>
-                <button id="hd-button-cancel" class="hd-button hd-cancel-button" onclick='hd_dialogbox()'>Cancel</button>
+                <button id="hd-button-ok" class="hd-button hd-ok-button" >Delete</button>
+                <button id="hd-button-cancel" class="hd-button hd-cancel-button" >Cancel</button>
             </div>
         </div>
     </div>
     
-    <button onclick='hd_dialogbox("delete")'> Delete </button>
-    <button onclick='hd_dialogbox("info")'> İnfo </button>
-    <button onclick='hd_dialogbox("warning")'> Warning </button>
-    <button onclick='hd_dialogbox("error")'> Error </button>
-    <button onclick='hd_dialogbox("success")'> Success </button>
+    <button onclick='hdConfirm(null, null,function(){hdAlertSuccess("Awesome!", "")})'> Delete </button>
+    <button onclick='hdAlertInfo()'> İnfo </button>
+    <button onclick='hdAlertWarning()'> Warning </button>
+    <button onclick='hdAlertError()'> Error </button>
+    <button onclick='hdAlertSuccess()'> Success </button>
     <script src="./js/hd-script.js"></script>
 </body>
 </html>
