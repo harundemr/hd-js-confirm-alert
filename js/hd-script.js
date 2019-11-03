@@ -1,13 +1,10 @@
-
-var hd_bg = document.getElementById('hd-bg');
-var hd_container = document.getElementById('hd-confirm-dialogbox');
-var hd_img = document.getElementById('hd-img-img');
-var hd_header = document.getElementById('hd-header-h');
-var hd_description = document.getElementById('hd-description-p');
-var hd_button_ok = document.getElementById('hd-button-ok');
-var hd_button_cancel = document.getElementById('hd-button-cancel');
-
-
+var hd_bg;
+var hd_container;
+var hd_img;
+var hd_header;
+var hd_description;
+var hd_button_ok;
+var hd_button_cancel;
 
 var options = {
     //delete window options
@@ -50,6 +47,19 @@ var options = {
     //butons's fonctions
     onOk : null,
     onCancel : null
+}
+
+
+function hdInit(){
+    document.body.insertAdjacentHTML('beforeend','<div id="hd-bg" class="hd-bg"><div id="hd-confirm-dialogbox" class="hd-container" style="display: none;"><div class="hd-img"><img id="hd-img-img" src="./img/warning.png"/></div><div class="hd-header"><h2 id="hd-header-h" class="hd-header-h"></h2></div><div class="hd-description"><p id="hd-description-p"></p></div><div class="hd-buttons"><button id="hd-button-ok" class="hd-button hd-ok-button" >Delete</button><button id="hd-button-cancel" class="hd-button hd-cancel-button" >Cancel</button></div></div></div>');
+
+    hd_bg = document.getElementById('hd-bg');
+    hd_container = document.getElementById('hd-confirm-dialogbox');
+    hd_img = document.getElementById('hd-img-img');
+    hd_header = document.getElementById('hd-header-h');
+    hd_description = document.getElementById('hd-description-p');
+    hd_button_ok = document.getElementById('hd-button-ok');
+    hd_button_cancel = document.getElementById('hd-button-cancel');
 }
 
 function hdConfirm(title, description, onOk, onCancel){
@@ -326,7 +336,7 @@ function destroy(){
 }
 
 function show(){
-    hd_bg.style.zIndex = 21;
+    hd_bg.style.zIndex = 999;
     hd_bg.style.display = "block";
     hd_container.style.display = 'block';
     
@@ -338,3 +348,5 @@ function show(){
     hd_button_ok.addEventListener('click', ok);
     hd_button_cancel.addEventListener('click', cancel);
 }
+
+hdInit();

@@ -3,24 +3,6 @@
     <link rel="stylesheet" href="./css/hd-style.css">
 </head>
 <body style="text-align: center;">
-    <div id="hd-bg" class="hd-bg">
-        <div id="hd-confirm-dialogbox" class="hd-container" style="display: none;">
-            <div class="hd-img">
-                <img id="hd-img-img" src="./img/warning.png"/>
-            </div>
-            <div class="hd-header">
-                <h2 id="hd-header-h" class="hd-header-h"></h2>
-            </div>
-            <div class="hd-description">
-                <p id="hd-description-p"></p>
-            </div>
-            <div class="hd-buttons">
-                <button id="hd-button-ok" class="hd-button hd-ok-button" >Delete</button>
-                <button id="hd-button-cancel" class="hd-button hd-cancel-button" >Cancel</button>
-            </div>
-        </div>
-    </div>
-    
     <button onclick='hdConfirm(null, null,function(){hdAlertSuccess("Awesome!", "")})'> Delete </button>
     <button onclick='hdAlertInfo()'> İnfo </button>
     <button onclick='hdAlertWarning()'> Warning </button>
