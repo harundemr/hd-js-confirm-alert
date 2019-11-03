@@ -1,4 +1,4 @@
-# javascript-confirm
+# hd-js-confirm-alert
 javascript confirm box design and alert design
 ## hdConfirm
 ### Usege
