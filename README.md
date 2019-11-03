@@ -1,5 +1,5 @@
 # javascript-confirm
-javascript confirm box design and alert design in instagram style
+javascript confirm box design and alert design
 ## hdConfirm
 ### Usege
 - hdConfirm() <br/>
