@@ -1,7 +1,7 @@
 # hd-js-confirm-alert
 javascript confirm box design and alert design
 ## hdConfirm
-### Usege
+### Usage
 - hdConfirm() <br/>
 `hdConfirm()`
 - hdConfirm( title, description ) <br/>
@@ -13,7 +13,7 @@ javascript confirm box design and alert design
 
 ## hdAlert
 Success, Warning, İnfo, Error alert designs
-### Usege Success Alert
+### Usage Success Alert
 - hdAlertSuccess() <br/>
 `hdAlertSuccess()`
 - hdAlertSuccess( title, description ) <br/>
@@ -21,7 +21,7 @@ Success, Warning, İnfo, Error alert designs
 - hdAlertSuccess( title, description, okCallback ) <br/>
 `hdAlertSuccess( "title", "description", function(){ alert("ok") } )`
 
-### Usege Info Alert
+### Usage Info Alert
 - hdAlertInfo() <br/>
 `hdAlertInfo()`
 - hdAlertInfo( title, description ) <br/>
@@ -29,7 +29,7 @@ Success, Warning, İnfo, Error alert designs
 - hdAlertInfo( title, description, okCallback ) <br/>
 `hdAlertInfo( "title", "description", function(){ alert("ok") } )`
 
-### Usege Warning Alert
+### Usage Warning Alert
 - hdAlertWarning() <br/>
 `hdAlertWarning()`
 - hdAlertWarning( title, description ) <br/>
@@ -38,7 +38,7 @@ Success, Warning, İnfo, Error alert designs
 `hdAlertWarning( "title", "description", function(){ alert("ok") } )`
 
 
-### Usege Error Alert
+### Usage Error Alert
 - hdAlertError() <br/>
 `hdAlertError()`
 - hdAlertError( title, description ) <br/>
