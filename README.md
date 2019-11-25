@@ -12,7 +12,7 @@ javascript confirm box design and alert design
 `hdConfirm( "title", "description", function(){ alert("Deleted") }, function(){ alert("Cancaled") } )`
 
 ## hdAlert
-Success, Warning, İnfo, Error alert designs
+Success, Warning, Info, Error alert designs
 ### Usage Success Alert
 - hdAlertSuccess() <br/>
 `hdAlertSuccess()`

@@ -18,7 +18,7 @@ var options = {
 
     //information window options
     info_img : "./img/info.svg",
-    info_title : "İnformation",
+    info_title : "Information",
     info_description : "It is a long established fact that a reader will be of a page when looking at its layout",
     info_button_ok_text : "Ok",
     info_button_ok_color : "#48a0dc",
